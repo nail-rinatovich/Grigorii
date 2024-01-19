@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+  
+  
+<div class="text-center">
+  {% for post in object_list %}
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-sm">
+        <img src="{{ post.image_set.first.image.url }}" alt="{{ post.title }}" class="img-fluid m-3" width="300px;">
+      </div>
+      <div class="col-sm text-left">
+        <div class="post-entry">
+          <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+          <p class="text-light">{{ post.body }}</p>
+
+          <h3 class="text-light">Gеnre: {{ post.genre }}</h3>
+          <h3 class="text-light">Price: {{ post.price }}</h3>
+      
+      
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  {% endfor %}
+</div>
+
+{% endblock content %}
